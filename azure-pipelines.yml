@@ -37,5 +37,5 @@ steps:
 - task: CmdLine@2
   displayName: 'Run tests'
   inputs:
-    script: 'ls -1'
-    workingDirectory: 'starter-code/starterapi.json'
+    script: 'newman run starterapi.json'
+    workingDirectory: $(Build.SourcesDirectory)
