@@ -38,4 +38,4 @@ steps:
   displayName: 'Run tests'
   inputs:
     script: 'newman run starterapi.json'
-    workingDirectory: 'starterapi.json'
+    workingDirectory: 'starter-code/starterapi.json'
