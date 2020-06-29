@@ -10,12 +10,6 @@ pool:
   vmImage: 'ubuntu-latest'
 strategy:
   matrix:
-    Python27:
-      python.version: '2.7'
-    Python35:
-      python.version: '3.5'
-    Python36:
-      python.version: '3.6'
     Python37:
       python.version: '3.7'
 
@@ -34,3 +28,14 @@ steps:
     pip install pytest pytest-azurepipelines
     pytest
   displayName: 'pytest'
+
+- task: CmdLine@2
+  displayName: 'install newman'
+  inputs:
+    script: 'sudo npm install -g newman'
+    workingDirectory: $(System.DefaultWorkingDirectory)
+- task: CmdLine@2
+  displayName: 'Run tests'
+  inputs:
+    script: 'newman startapi.json'
+    workingDirectory: 'starterapi.json'
